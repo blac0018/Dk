@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Bestie!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 4em;
+            color: #ff69b4;
+            margin-top: 100px;
+            animation: slideIn 1s ease-out;
+        }
+
+        .message {
+            font-size: 2em;
+            color: #ff4500;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        button {
+            background-color: #ff6347;
+            color: white;
+            font-size: 1.5em;
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+            margin-top: 30px;
+            border-radius: 5px;
+            animation: bounce 1s infinite alternate;
+        }
+
+        button:hover {
+            background-color: #ff4500;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            font-size: 30px;
+            color: red;
+            opacity: 0;
+            animation: confettiAnimation 2s infinite ease-in-out;
+        }
+
+        @keyframes confettiAnimation {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(300px) rotate(720deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Happy Birthday, Bestie! 🎉</h1>
+
+    <div class="message" id="message">
+        Wishing you a day filled with laughter, love, and joy! 🥳
+    </div>
+
+    <button onclick="changeMessage()">Click for Another Message!</button>
+
+    <div class="confetti" id="confetti"></div>
+
+    <script>
+        const messages = [
+            "🎉 Happy Birthday, Bestie! 🎉",
+            "You're not getting older, you're just leveling up! 🚀",
+            "Another year older, another year wiser! Cheers to you! 🥂",
+            "May your dreams come true this year. 💫",
+            "You're the best, Bestie! Wishing you the happiest birthday ever! 🎂"
+        ];
+
+        let currentIndex = 0;
+
+        function changeMessage() {
+            currentIndex = (currentIndex + 1) % messages.length;
+            document.getElementById("message").innerHTML = messages[currentIndex];
+        }
+
+        function createConfetti() {
+            const confettiContainer = document.getElementById("confetti");
+            for (let i = 0; i < 100; i++) {
+                const confettiPiece = document.createElement("div");
+                confettiPiece.classList.add("confetti-piece");
+                confettiPiece.innerHTML = "♥️";
+                confettiPiece.style.left = `${Math.random() * 100}%`;
+                confettiPiece.style.animationDelay = `${Math.random() * 2}s`;
+                confettiPiece.style.animationDuration = `${Math.random() * 2 + 3}s`;
+                confettiContainer.appendChild(confettiPiece);
+            }
+        }
+
+        // Start confetti animation
+        createConfetti();
+
+    </script>
+
+
+</body></html>
